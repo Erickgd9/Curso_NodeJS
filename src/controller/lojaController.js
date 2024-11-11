@@ -2,17 +2,18 @@ import { Router } from 'express';
 
 const endpoint = Router();
 
+// Validação:
+
+import { pedidoCompletoValidation, pedidoValidation } from '../validation/Loja/lojaValidation.js';
+
+// Processamento:
+
 import { calcItens, desconto, percelas } from '../service/Loja/lojaService.js';
 
 
 endpoint.post( '/loja/pedido', ( req, resp ) => {
     try {
-        if ( !req.body.total || isNaN( req.body.total ) ) {
-            throw new Error('O parâmetro total esta inválido');
-        }
-        if ( !req.body.parcelas || isNaN( req.body.parcelas ) ) {
-            throw new Error('O parâmetro parcela esta inválido');
-        }
+        pedidoValidation(req);
 
         let total = ( req.body.total );
         let parcelas = ( req.body.parcelas );
@@ -40,12 +41,7 @@ endpoint.post( '/loja/pedido', ( req, resp ) => {
 
 endpoint.post( 'loja/pedido/completo', ( req, resp ) => {
     try {
-        if ( !req.body.parcelas || isNaN(req.body.parcelas)  ) {
-            throw new Error('O parâmetro parcela esta inválido');
-        }
-        if ( !req.body.itens  ) {
-            throw new Error('O parâmetro itens esta inválido');
-        }
+        pedidoCompletoValidation( req );
 
         let parcelas = ( req.body.parcelas );
         let itens = ( req.body.itens );

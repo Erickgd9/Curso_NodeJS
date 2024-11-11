@@ -3,13 +3,12 @@ import { Router } from 'express';
 const endpoint = Router();
 
 import { somarDoisValores } from '../service/Calculadora/calculadoraService.js';
+import { somarValidation } from '../validation/Calculadora/calculadoraValidation.js';
 
 
 endpoint.get('calculadora/somar/:n1/:n2', (req, resp) => {
     try {
-        if (isNaN(resp.params.n1)) {
-            throw new Error('Os parâmetros devem ser números.');        
-        }
+        somarValidation(req);
 
         let n1 = Number(req.params.n1);
         let n2 = Number(req.params.n2);
