@@ -1,9 +1,19 @@
+// Validação:
+
+
+// Processamento:
+import { somarDoisValores } from '../service/Calculadora/calculadoraService.js';
+import { somarValidation } from '../validation/Calculadora/calculadoraValidation.js';
+
+
+// Saída:
+import { criarError } from '../utils/error.js';
+import { logError } from '../utils/log.js';
+
+
 import { Router } from 'express';
 
 const endpoint = Router();
-
-import { somarDoisValores } from '../service/Calculadora/calculadoraService.js';
-import { somarValidation } from '../validation/Calculadora/calculadoraValidation.js';
 
 
 endpoint.get('calculadora/somar/:n1/:n2', (req, resp) => {
@@ -17,13 +27,10 @@ endpoint.get('calculadora/somar/:n1/:n2', (req, resp) => {
         resp.send({
             soma: soma
         });
-
     }
     catch (err) {
-        resp.status(400).send({
-            error: err.message
-        })
-        
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
 })
 
@@ -36,15 +43,11 @@ endpoint.get('calculadora/somar2', (req, resp) => {
         resp.send({
             soma: soma
         });
-        
     } 
     catch ( err ) {
-        resp.status(400).send({
-            error: err.message
-        })
-
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
-
 })
 
 export default endpoint;

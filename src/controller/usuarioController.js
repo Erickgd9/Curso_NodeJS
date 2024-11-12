@@ -1,8 +1,19 @@
-import { Router } from 'express';
+// Validação:
+
+
+// Processamento:
+
+
+// Saída:
+import { criarError } from '../utils/error.js';
+import { logError } from '../utils/log.js';
+
 
 import multer from 'multer';
 
 let uploadPerfil = multer( { dest: '/storage/perfil' } );
+
+import { Router } from 'express';
 
 const endpoint = Router();
 
@@ -21,9 +32,8 @@ endpoint.post( '/perfil/capa', uploadPerfil.single( 'imagem' ) , ( req, resp )  
 
     }
     catch (err) {
-        resp.status(400).send({
-            error: err.menssage
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
 } )
 

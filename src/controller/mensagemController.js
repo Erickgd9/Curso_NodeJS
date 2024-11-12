@@ -1,9 +1,18 @@
+// Validação:
+import { olaValidation } from '../validation/Mensagem/mansagemValidation.js';
+
+
+// Processamento:
+
+
+// Saída:
+import { criarError } from '../utils/error.js';
+import { logError } from '../utils/log.js';
+
+
 import { Router } from 'express';
 
 const endpoint = Router();
-
-
-import { olaValidation } from '../validation/Mensagem/mansagemValidation.js';
 
 
 endpoint.get( '/hello_word', ( req, resp ) => {
@@ -13,9 +22,8 @@ endpoint.get( '/hello_word', ( req, resp ) => {
         } );
     }
     catch ( err ) {
-        resp.status(400).send({
-            error: err.menssage
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
 } );
 
@@ -26,9 +34,8 @@ endpoint.get( '/mensagem/boas_vindas', ( req, resp ) => {
         } );
     }
     catch ( err ) {
-        resp.status(400).send({
-            error: err.menssage
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
 } );
 
@@ -39,9 +46,8 @@ endpoint.get( '/v2/mensagem/boas_vindas', ( req, resp ) => {
         } );
     }
     catch ( err ) {
-        resp.status(400).send({
-            error: err.menssage
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }    
 } );
 
@@ -52,9 +58,8 @@ endpoint.get( '/mensagem/ocupado', ( req, resp ) => {
         } );
     }
     catch ( err ) {
-        resp.status(400).send({
-            error: err.message
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
 } );
 
@@ -65,9 +70,8 @@ endpoint.get( '/mensagem/ocupado/recado', ( req, resp ) => {
         } );
     }
     catch ( err ) {
-        resp.status(400).send({
-            error: err.message
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
 } );
 
@@ -82,9 +86,8 @@ endpoint.get( '/mensagem/ola', ( req, resp ) => {
         } );
     }
     catch ( err ) {
-        resp.status(400).send( {
-            error: err.message
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
 } )
 

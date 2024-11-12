@@ -1,12 +1,21 @@
+// Validação:
+
+
+// Processamento:
+import { duplicar, mediaDeTres } from '../service/Exercicios/exerciciosService.js';
+
+
+// Saída:
+import { criarError } from '../utils/error.js';
+import { logError } from '../utils/log.js';
+
+
 import { Router } from 'express';
 
 const endpoint = Router();
 
-import { duplicar, mediaDeTres } from '../service/Exercicios/exerciciosService.js';
-
 
 endpoint.post( '/media', ( req, resp ) => {
-
     try {       
         let n1 = ( req.body.nota1 );
         let n2 = ( req.body.nota2 );
@@ -20,11 +29,9 @@ endpoint.post( '/media', ( req, resp ) => {
 
     }
     catch ( err ) {
-        resp.status(400).send({
-            error: err.menssage
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
-
 } )
 
 endpoint.post( '/dobros', ( req, resp ) => {
@@ -40,11 +47,9 @@ endpoint.post( '/dobros', ( req, resp ) => {
             
     }
         catch ( err ) {
-        resp.status(400).send({
-            error: err.menssage
-        })
+        logError( err );
+        resp.status(400).send( criarError( err ) )
     }
-    
 } );
 
 export default endpoint;
