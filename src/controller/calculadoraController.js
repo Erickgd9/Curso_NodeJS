@@ -1,3 +1,9 @@
+// Componentes:
+import { Router } from 'express';
+
+const endpoint = Router();
+
+
 // Validação:
 
 
@@ -7,13 +13,7 @@ import { somarValidation } from '../validation/Calculadora/calculadoraValidation
 
 
 // Saída:
-import { criarError } from '../utils/error.js';
-import { logError } from '../utils/log.js';
 
-
-import { Router } from 'express';
-
-const endpoint = Router();
 
 
 endpoint.get('calculadora/somar/:n1/:n2', (req, resp) => {

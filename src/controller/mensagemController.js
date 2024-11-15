@@ -1,3 +1,9 @@
+// Componentes:
+import { Router } from 'express';
+
+const endpoint = Router();
+
+
 // Validação:
 import { olaValidation } from '../validation/Mensagem/mansagemValidation.js';
 
@@ -6,13 +12,7 @@ import { olaValidation } from '../validation/Mensagem/mansagemValidation.js';
 
 
 // Saída:
-import { criarError } from '../utils/error.js';
-import { logError } from '../utils/log.js';
 
-
-import { Router } from 'express';
-
-const endpoint = Router();
 
 
 endpoint.get( '/hello_word', ( req, resp ) => {

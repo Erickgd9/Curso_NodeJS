@@ -1,3 +1,9 @@
+// Componentes:
+import { Router } from 'express';
+
+const endpoint = Router();
+
+
 // Validação:
 
 
@@ -6,13 +12,7 @@ import { duplicar, mediaDeTres } from '../service/Exercicios/exerciciosService.j
 
 
 // Saída:
-import { criarError } from '../utils/error.js';
-import { logError } from '../utils/log.js';
 
-
-import { Router } from 'express';
-
-const endpoint = Router();
 
 
 endpoint.post( '/media', ( req, resp ) => {

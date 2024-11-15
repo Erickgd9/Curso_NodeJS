@@ -1,14 +1,4 @@
-// Validação:
-
-
-// Processamento:
-
-
-// Saída:
-import { criarError } from '../utils/error.js';
-import { logError } from '../utils/log.js';
-
-
+// Componentes:
 import multer from 'multer';
 
 let uploadPerfil = multer( { dest: '/storage/perfil' } );
@@ -16,6 +6,16 @@ let uploadPerfil = multer( { dest: '/storage/perfil' } );
 import { Router } from 'express';
 
 const endpoint = Router();
+
+
+// Validação:
+
+
+// Processamento:
+
+
+// Saída:
+
 
 
 endpoint.post( '/perfil/capa', uploadPerfil.single( 'imagem' ) , ( req, resp )  => {

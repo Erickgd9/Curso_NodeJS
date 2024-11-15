@@ -1,19 +1,19 @@
 // Validação:
+// Componentes:
+import { Router } from 'express';
+
+const endpoint = Router();
+
+
 import { pedidoCompletoValidation, pedidoValidation } from '../validation/Loja/lojaValidation.js';
 
 
 // Processamento:
-import { calcItens, desconto, percelas } from '../service/Loja/lojaService.js';
+import { calcItens, desconto, parcelas } from '../service/Loja/lojaService.js';
 
 
 // Saída:
-import { logError } from '../utils/log.js';
-import { criarError } from '../utils/error.js';
 
-
-import { Router } from 'express';
-
-const endpoint = Router();
 
 
 endpoint.post('/loja/pedido', (req, resp) => {
@@ -26,7 +26,7 @@ endpoint.post('/loja/pedido', (req, resp) => {
 
         total = desconto(total, parcelas, cupom);
 
-        let valorParcela = percelas(total, parcelas);
+        let valorParcela = parcelas(total, parcelas);
 
         resp.send({
             total: total,
@@ -37,7 +37,7 @@ endpoint.post('/loja/pedido', (req, resp) => {
     }
     catch (err) {
         logError(err);
-        resp.status(400).send( criarError( err ) )
+        resp.status(400).send(criarError(err))
     }
 });
 
@@ -63,7 +63,7 @@ endpoint.post('loja/pedido/completo', (req, resp) => {
     }
     catch (err) {
         logError(err);
-        resp.status(400).send( criarError( err ) )
+        resp.status(400).send(criarError(err))
     }
 });
 
