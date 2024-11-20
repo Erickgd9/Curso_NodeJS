@@ -1,6 +1,8 @@
+// Adicionais:
 import express from 'express';
 
 
+// Endpoints:
 import calculadoraController from './controller/calculadoraController.js';
 import exerciciosController from './controller/exerciciosController.js';
 import lojaController from './controller/lojaController.js';
