@@ -5,7 +5,8 @@ import cors from 'cors';
 
 
   // Imports:
-import rotas from './route.js';
+import route from './route.js';
+import "./utils/global/#imports.js";
 
 
   // Aplicações:
@@ -17,3 +18,4 @@ rotas( servidor );
 
   // Ao Rodar:
 servidor.listen( process.env.PORTA, () => console.log(`---> API subiu com sucesso na porta ${process.env.PORTA}`) )
+
